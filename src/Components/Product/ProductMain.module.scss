@@ -1,0 +1,25 @@
+.main {
+  padding: 20px 10px 0px 10px;
+
+  .ProductDetailsheading {
+    padding: 10px 30px;
+  }
+
+  .productInputs {
+    padding: 10px 20px;
+
+    .InputBox {
+      padding: 10px 10px;
+    }
+
+    .specTable {
+      table,
+      th,
+      td {
+        border: 1px solid rgba(0, 0, 0, 0.525);
+        border-collapse: collapse;
+        padding: 10px;
+      }
+    }
+  }
+}
