@@ -6,7 +6,7 @@ import {
   Typography,
   FormControl,
   InputLabel,
-  MenuItem,
+  option,
   Select,
   Checkbox,
   FormControlLabel,
@@ -168,9 +168,30 @@ export default function ProductMain() {
       setProductList([...porductList]);
       setisSubmitSuccessful(true);
     } else {
+      alert();
       productObj.prodctId = uuid();
       setProductList([...porductList, { ...productObj }]);
       reset();
+      //   {defaultValues:{
+      //     producName: "",
+      //     productCode: "",
+      //     brand: "",
+      //     phone: "",
+      //     laptop: "",
+      //     clothing: "",
+      //     price: "",
+      //     image: "",
+      //     emptyImage: "",
+      //     SpecificationsList: "",
+      //     manufact_date: "",
+      //     FY: "",
+      //     isEdit: "",
+      //     checkBox:null,
+      //   }}
+
+      setValue("brand", "select");
+
+      // useForm({ defaultValues: { firstItem: '' }});
     }
   };
 
@@ -282,19 +303,19 @@ export default function ProductMain() {
                 >
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Brand</InputLabel>
-                    <Select
+                    <select
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
-                      //   value={productObj.brand}
+                      //   value={"apple"}
                       label="Brand"
-                      name="brand"
-                      onChange={productDetailsOnHandleChange}
+                      //   onChange={productDetailsOnHandleChange}
                       {...register("brand", { required: true })}
                     >
-                      <MenuItem value={"apple"}>apple</MenuItem>
-                      <MenuItem value={"mi"}>mi</MenuItem>
-                      <MenuItem value={"oppo"}>oppo</MenuItem>
-                    </Select>
+                      <option value={"select"}>Select</option>
+                      <option value={"apple"}>apple</option>
+                      <option value={"mi"}>mi</option>
+                      <option value={"oppo"}>oppo</option>
+                    </select>
                     {errors.brand && errors.brand.type === "required" && (
                       <span style={{ color: "red" }}>This is required</span>
                     )}
@@ -311,12 +332,12 @@ export default function ProductMain() {
                 >
                   <FormGroup>
                     <Stack direction={"row"}>
-                      <FormControlLabel
+                      {/* <FormControlLabel
                         control={
                           <Checkbox
                             // checked={productObj.category.phone}
                             name="phone"
-                            onChange={checkBoxHandleOnChange}
+                            // onChange={checkBoxHandleOnChange}
                             {...register("checkBox", { required: true })}
                           />
                         }
@@ -331,7 +352,7 @@ export default function ProductMain() {
                           <Checkbox
                             // checked={productObj.category.laptop}
                             name="laptop"
-                            onChange={checkBoxHandleOnChange}
+                          //  onChange={checkBoxHandleOnChange}
                             {...register("checkBox", { required: true })}
                           />
                         }
@@ -345,12 +366,14 @@ export default function ProductMain() {
                           <Checkbox
                             // checked={productObj.category.clothing}
                             name="clothing"
-                            onChange={checkBoxHandleOnChange}
+                         //   onChange={checkBoxHandleOnChange}
                             {...register("checkBox", { required: true })}
                           />
                         }
                         label="Clothing"
-                      />
+                      /> */}
+                      <span>laptop</span>
+                      <input type="checkbox"  name="laptop"  {...register("checkBox", { required: true })}></input>
                       {errors.checkBox &&
                         errors.checkBox.type === "required" && (
                           <span style={{ color: "red" }}>This is required</span>
@@ -566,6 +589,18 @@ export default function ProductMain() {
                     type="submit"
                   >
                     save
+                  </Button>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    color="success"
+                    onClick={() => {
+                      reset();
+                      setValue("brand", "select");
+                      setValue("checkBox", null);
+                    }}
+                  >
+                    Reset
                   </Button>
                 </Grid>
               </Grid>
